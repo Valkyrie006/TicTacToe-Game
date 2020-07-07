@@ -91,11 +91,11 @@ class TicTacToe
 		
 		void computer_move()
 		{
-			Move best_move = minmax();
+			Move best_move = minimax();
 			grid[best_move.row][best_move.col] = computer;
 		}
 		
-		Move minmax(bool maximizing_player = 1)
+		Move minimax(bool maximizing_player = 1)
 		{
 			Move best_move;
 			if(win())
@@ -124,7 +124,7 @@ class TicTacToe
 					if(grid[r][c] == ' ')
 					{
 						grid[r][c] = maximizing_player ? computer : player;
-						Move board_state = minmax(!maximizing_player);
+						Move board_state = minimax(!maximizing_player);
 						if(maximizing_player)
 						{
 							if(board_state.score > best_move.score)
